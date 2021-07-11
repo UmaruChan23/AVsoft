@@ -74,9 +74,9 @@ public class UserData {
         }
     }
 
-    public boolean updateUserInfo(final UserEntity user) {
-        if(!userIsExist(user)){
-            return false;
+    public void updateUserInfo(final UserEntity user) {
+        if(userIsExist(user)){
+            return;
         }
         SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
         Session session = sessionFactory.openSession();
@@ -85,10 +85,8 @@ public class UserData {
             session.update(user);
             transaction.commit();
             session.close();
-            return true;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return false;
         }
     }
 
@@ -108,10 +106,10 @@ public class UserData {
     }
 
     public boolean userIsExist(UserEntity user) {
-        return getUserByLoginPassword(user.getUsername(), user.getPassword()) != null;
+        return getUserByLoginPassword(user.getUsername(), user.getPassword()) == null;
     }
 
-    public boolean changeUserRole(String targetUser, String role, String reqRole) {
+    public void changeUserRole(String targetUser, String role, String reqRole) {
         if (reqRole.equalsIgnoreCase("ADMIN")) {
             Roles newRole = Roles.UNKNOWN;
             if(role.equalsIgnoreCase("ADMIN")){
@@ -121,13 +119,12 @@ public class UserData {
             }
             UserEntity user = getUserByName(targetUser);
             user.setRole(newRole);
-            return updateUserInfo(user);
+            updateUserInfo(user);
         }
-        return false;
     }
 
     public boolean deleteUser(UserEntity user){
-        if(!userIsExist(user)){
+        if(userIsExist(user)){
             return false;
         }
         SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
