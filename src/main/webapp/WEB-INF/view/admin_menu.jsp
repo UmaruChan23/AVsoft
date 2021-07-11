@@ -9,6 +9,10 @@
 
 <h1>Hello ADMIN!</h1>
 <a href="<c:url value='/logout' />">Logout</a><br>
-<a href="<c:url value='/files' />">Files</a>
+<a href="<c:url value='/files' />">Files</a><br>
+<a href="<c:url value='/roles' />">Roles</a>
+<br>
+<br>
+
 </body>
 </html>

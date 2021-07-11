@@ -46,4 +46,14 @@ public class UserEntity {
     public void setRole(Roles role) {
         this.role = role;
     }
+
+    public void setRole(String role) {
+        if(role.equalsIgnoreCase("ADMIN")){
+            this.setRole(Roles.ADMIN);
+        } else if (role.equalsIgnoreCase("USER")) {
+            this.setRole(Roles.USER);
+        } else {
+            this.setRole(Roles.UNKNOWN);
+        }
+    }
 }

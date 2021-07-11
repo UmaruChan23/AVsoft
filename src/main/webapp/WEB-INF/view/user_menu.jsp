@@ -8,6 +8,7 @@
 <body>
 
 <h1>Hello USER!</h1>
-<a href="<c:url value="/logout"/>">Logout</a>
+<a href="<c:url value="/logout"/>">Logout</a><br>
+<a href="<c:url value='/files' />">Files</a>
 </body>
 </html>

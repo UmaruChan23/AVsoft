@@ -14,9 +14,10 @@
 
         <input type="text" required placeholder="login" name="login"><br>
         <input type="password" required placeholder="password" name="password"><br><br>
-        <input class="button" type="submit" value="Войти">
-
+        <input class="button" type="submit" value="Войти"><br>
+        <input formmethod="post" formaction="/users" class="button" type="submit" value="Регистриция"><br>
     </form>
 </div>
+<a href="<c:url value='/files' />">Files</a>
 </body>
 </html>
